@@ -10,5 +10,20 @@
 
 <h1>Hello JSP</h1>
 
+<pre>
+<%-- scripting element --%>
+
+<%-- Epression --%>
+				<%= 2*3 %>
+				<%= new Integer(3330) %>
+
+				<%= new String("Tarequl Islam") %>
+
+				<%= new java.util.Date() %>
+
+				<%! int x = 23; %>
+
+				<%= x%2==1 ? "x consist odd number" : "x consist Even Number" %>
+</pre>
 </body>
 </html>
