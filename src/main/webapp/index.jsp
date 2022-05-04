@@ -24,6 +24,22 @@
 				<%! int x = 23; %>
 
 				<%= x%2==1 ? "x consist odd number" : "x consist Even Number" %>
+				
+				
+				<%-- scriplet, which is powerful element on scripting element --%>
+				<%
+				
+					for(int i=1; i<=10; i++)
+					{
+						if(i%2==1){
+							out.print("<p>"+i+" is odd</p>");
+						}
+						else{
+							out.print("<p>"+i+" is even</p>");
+						}
+					}
+				
+				%>
 </pre>
 </body>
 </html>
