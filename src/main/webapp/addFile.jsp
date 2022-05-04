@@ -4,19 +4,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Hello JSP</title>
+<title>Insert title here</title>
 </head>
 <body>
+
+	<%--  For adding static content --%>
+	<%@ include file="index.html" %>
 	
 	
-	<%
+	<%-- For adding Dynamic content --%>
 	
-		out.println("<p>"+request.getParameter("first-name")+"</p>");
-		out.println("<p>"+request.getParameter("last-name")+"</p>");
-	
-	%>
-	
-	
-	
+	<jsp:include page="index.jsp"/>
+
 </body>
 </html>
