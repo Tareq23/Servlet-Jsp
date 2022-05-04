@@ -43,7 +43,8 @@
 				
 				
 				<%-- Declaration scripting element --%>
-				<%-- It's basically used for decalared method --%>
+				<%-- It's basically used for declared method --%>
+				<%-- And also used for access specifier --%>
 				
 				<%!
 				
