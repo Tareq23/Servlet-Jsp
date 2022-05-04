@@ -9,7 +9,12 @@
 <body>
 	
 	
-	Hello JSP
+	<%
+	
+		out.println("<p>"+request.getParameter("first-name")+"</p>");
+		out.println("<p>"+request.getParameter("last-name")+"</p>");
+	
+	%>
 	
 </body>
 </html>
