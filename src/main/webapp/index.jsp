@@ -40,6 +40,27 @@
 					}
 				
 				%>
+				
+				
+				<%-- Declaration scripting element --%>
+				<%-- It's basically used for decalared method --%>
+				
+				<%!
+				
+					int square(int x)
+					{
+						return x*x;
+					}
+					
+				%>
+				
+				<%
+					for(int i=1; i<=10; i++)
+					{
+						out.print("<p>"+i+" * "+i+"   => "+square(i)+"</p>");
+					}
+				%>
+				
 </pre>
 </body>
 </html>
