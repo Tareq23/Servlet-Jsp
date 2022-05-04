@@ -36,9 +36,9 @@ public class ShowInfo extends HttpServlet {
 		String name = request.getParameter("name");
 		String contact = request.getParameter("contact");
 		
-		pw.println("<h3>Hello "+name+"</h3>");
+		pw.println("<h3>Hello, "+name+"</h3>");
 		pw.println("<p>Your Email : "+email+"</p>");
-		pw.println("<p>TYour Contact : "+contact+"</p>");
+		pw.println("<p>Your Contact : "+contact+"</p>");
 		
 		pw.close();
 	}
