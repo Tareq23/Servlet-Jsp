@@ -8,6 +8,9 @@
 </head>
 <body>
 
+
+
+
 	<%--  For adding static content --%>
 	<%@ include file="index.html" %>
 	
