@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<form action="submit.jsp" method="post">
+	<form action="<%= request.getContextPath() %>/controller" method="post">
 	
 		Full Name : <input type="text" name="full-name"/><br/>
 		Gender : <input type="radio" value="male"name="gender"> Male
@@ -18,6 +18,7 @@
 						<input type="checkbox" name="language" value="english"> English
 						<input type="checkbox" name="language" value="arabic"> Arabic<br/>
 		Country	: <select name="country">
+					<option value="0">Select Country</option>
 					<option value="bangladesh">Bangladesh</option>
 					<option value="uk">UK</option>
 					<option value="india">India</option>
