@@ -55,6 +55,9 @@ public class MemberAreaController extends HttpServlet {
 		case "member-area":
 			request.getRequestDispatcher("memberArea.jsp").forward(request, response);
 			break;
+		case "member-only":
+			request.getRequestDispatcher("memberOnly.jsp").forward(request, response);
+			break;
 		default :
 			break;
 		}
