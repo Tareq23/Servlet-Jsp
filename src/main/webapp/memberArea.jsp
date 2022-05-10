@@ -14,9 +14,23 @@
 
 String username=null,sessionId=null;
 
-Cookie[] cookies = request.getCookies();
 
-if(cookies != null)
+
+
+	if(request.getSession().getAttribute("username")==null)
+	{
+		response.sendRedirect("login.jsp");
+	}
+	else{
+		username = request.getSession().getAttribute("username").toString();
+		sessionId = request.getSession().getId();
+	}
+
+
+
+/* Cookie[] cookies = request.getCookies(); */
+
+/* if(cookies != null)
 {
 	for(Cookie cookie : cookies)
 	{
@@ -29,12 +43,12 @@ if(cookies != null)
 			sessionId = cookie.getValue();
 		}
 	}
-}
+} */
 
-if(sessionId == null || username==null)
+/* if(sessionId == null || username==null)
 {
 	response.sendRedirect("login.jsp");
-}
+} */
 
 %>
 

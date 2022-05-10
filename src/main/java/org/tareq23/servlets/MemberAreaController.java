@@ -34,19 +34,19 @@ public class MemberAreaController extends HttpServlet {
 		{
 		case "destroy":
 			
-			request.getSession().invalidate();
+			request.getSession().invalidate();//it's good enough 
 			
-			Cookie[] cookies = request.getCookies();
-			
-			for(Cookie cookie : cookies)
-			{
-				if(cookie.getName().equals("username"))
-				{
-					cookie.setValue(null);
-					cookie.setMaxAge(0);
-					response.addCookie(cookie);
-				}
-			}
+//			Cookie[] cookies = request.getCookies();
+//			
+//			for(Cookie cookie : cookies)
+//			{
+//				if(cookie.getName().equals("username"))
+//				{
+//					cookie.setValue(null);
+//					cookie.setMaxAge(0);
+//					response.addCookie(cookie);
+//				}
+//			}
 			
 			response.sendRedirect("login.jsp");
 			

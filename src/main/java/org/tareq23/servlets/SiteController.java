@@ -41,13 +41,15 @@ public class SiteController extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		
+		
+		
 		if(username.equals("tareq23")&&password.equals("123456"))
 		{
 			//Invalidate session if any
 			request.getSession().invalidate();
 			
 			HttpSession newSession = request.getSession(true);
-			
+			newSession.setAttribute("username", username);
 			newSession.setMaxInactiveInterval(200);
 			Cookie cUsername = new Cookie("username",username);
 			response.addCookie(cUsername);
