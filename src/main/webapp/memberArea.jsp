@@ -19,7 +19,8 @@ String username=null,sessionId=null;
 
 	if(request.getSession().getAttribute("username")==null)
 	{
-		response.sendRedirect("login.jsp");
+		/* response.sendRedirect("login.jsp"); */
+		response.sendRedirect("/home");
 	}
 	else{
 		username = request.getSession().getAttribute("username").toString();

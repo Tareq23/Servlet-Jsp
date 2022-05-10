@@ -4,22 +4,21 @@ import java.io.IOException;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MemberAreaController
+ * Servlet implementation class HomeController
  */
-@WebServlet("/MemberAreaController")
-public class MemberAreaController extends HttpServlet {
+@WebServlet("/home")
+public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public MemberAreaController() {
+    public HomeController() {
         // TODO Auto-generated constructor stub
     }
 
@@ -28,35 +27,17 @@ public class MemberAreaController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
-		
-		
+		System.out.println(action);
 		switch(action)
 		{
-		case "destroy":
+		case "login":
 			
-			request.getSession().invalidate();//it's good enough 
-			
-//			Cookie[] cookies = request.getCookies();
-//			
-//			for(Cookie cookie : cookies)
-//			{
-//				if(cookie.getName().equals("username"))
-//				{
-//					cookie.setValue(null);
-//					cookie.setMaxAge(0);
-//					response.addCookie(cookie);
-//				}
-//			}
-			
-			response.sendRedirect("login.jsp");
-//			response.sendRedirect("/home");
+			request.getRequestDispatcher("login.jsp").forward(request,response);
 			
 			break;
-			
-		default :
-			break;
+			default :
+				break;
 		}
-		
 	}
 
 	/**

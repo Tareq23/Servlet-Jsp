@@ -14,7 +14,6 @@
 		<p>Username : <input type="text" name="username" preference="username"/></p>
 		<p>Password : <input type="password" name="password" /></p>
 		<p><input type="submit" value="Submit"/></p>
-		
 	
 	
 	</form>
