@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -48,6 +49,8 @@ public class SiteController extends HttpServlet {
 			HttpSession newSession = request.getSession(true);
 			
 			newSession.setMaxInactiveInterval(200);
+			Cookie cUsername = new Cookie("username",username);
+			response.addCookie(cUsername);
 			response.sendRedirect("numberArea.jsp");
 		}
 		else {
