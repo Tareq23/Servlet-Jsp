@@ -38,7 +38,17 @@ if(sessionId == null || username==null)
 
 %>
 
-<%= username %><br/>
-<%= sessionId %>
+ Username : <%= username %><br/>
+ Session Id : <%= sessionId %><br/>
+ 
+ <form action="<%= request.getContextPath() %>/MemberAreaController" method="get">
+ 
+ 	<input type="hidden" name="action" value="destroy"/>
+ 	<input type="submit" value = "Logout"/>
+ 
+ </form>
+ 
+
+ 
 </body>
 </html>
