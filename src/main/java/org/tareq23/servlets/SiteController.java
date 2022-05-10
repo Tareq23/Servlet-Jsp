@@ -53,10 +53,12 @@ public class SiteController extends HttpServlet {
 			newSession.setMaxInactiveInterval(200);
 			Cookie cUsername = new Cookie("username",username);
 			response.addCookie(cUsername);
-			response.sendRedirect("memberArea.jsp");
+//			response.sendRedirect("memberArea.jsp");
+			response.sendRedirect(request.getContextPath()+"/member-area?action=member-area");
 		}
 		else {
-			response.sendRedirect("login.jsp");
+//			response.sendRedirect("login.jsp");
+			response.sendRedirect(request.getContextPath()+"/home?action=login");
 		}
 		
 		

@@ -20,7 +20,7 @@ String username=null,sessionId=null;
 	if(request.getSession().getAttribute("username")==null)
 	{
 		/* response.sendRedirect("login.jsp"); */
-		response.sendRedirect("/home");
+		response.sendRedirect(request.getContextPath()+"/home");
 	}
 	else{
 		username = request.getSession().getAttribute("username").toString();
@@ -56,7 +56,7 @@ String username=null,sessionId=null;
  Username : <%= username %><br/>
  Session Id : <%= sessionId %><br/>
  
- <form action="<%= request.getContextPath() %>/MemberAreaController" method="get">
+ <form action="<%= request.getContextPath() %>/member-area" method="get">
  
  	<input type="hidden" name="action" value="destroy"/>
  	<input type="submit" value = "Logout"/>

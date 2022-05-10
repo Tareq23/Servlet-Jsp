@@ -27,7 +27,7 @@ public class HomeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
-		System.out.println(action);
+		if(action == null) action="default";
 		switch(action)
 		{
 		case "login":
@@ -36,6 +36,7 @@ public class HomeController extends HttpServlet {
 			
 			break;
 			default :
+				response.sendRedirect(request.getContextPath());
 				break;
 		}
 	}

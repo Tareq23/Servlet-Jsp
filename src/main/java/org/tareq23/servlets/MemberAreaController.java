@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MemberAreaController
  */
-@WebServlet("/MemberAreaController")
+@WebServlet("/member-area")
 public class MemberAreaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -48,11 +48,13 @@ public class MemberAreaController extends HttpServlet {
 //				}
 //			}
 			
-			response.sendRedirect("login.jsp");
-//			response.sendRedirect("/home");
+//			response.sendRedirect("login.jsp");
+			response.sendRedirect(request.getContextPath()+"/home?action=login");
 			
 			break;
-			
+		case "member-area":
+			request.getRequestDispatcher("memberArea.jsp").forward(request, response);
+			break;
 		default :
 			break;
 		}
