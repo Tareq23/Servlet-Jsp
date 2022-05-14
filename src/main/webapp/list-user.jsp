@@ -3,9 +3,10 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="org.tareq23.entity.User" %>
 
-<c:import url="include/header.jsp">
+<%-- <c:import url="include/header.jsp">
 	<c:param name="title" value="List User"/>
-</c:import>
+</c:import> --%>
+<%@include file="include/header.jsp" %>
 
 <div class="container mtb">
 
@@ -56,4 +57,5 @@
 
 
 
-<c:import url="include/footer.jsp"></c:import>
+<%-- <c:import url="include/footer.jsp"></c:import> --%>
+<%@include file="include/footer.jsp" %>

@@ -1,7 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:import url="include/header.jsp">
+<%-- <c:import url="include/header.jsp">
 	<c:param name="title" value="Error Page"/>
-</c:import>
+</c:import> --%>
+<%@include file="include/header.jsp"%>
 
 <div class="container mtb">
 
@@ -18,5 +19,6 @@
 </div>
 
 
-
-<c:import url="include/footer.jsp"></c:import>
+<%-- 
+<c:import url="include/footer.jsp"></c:import> --%>
+<%@include file="include/footer.jsp"%>

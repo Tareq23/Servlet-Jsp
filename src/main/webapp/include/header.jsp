@@ -8,7 +8,21 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
 
-    <title>${param.title}</title>
+ <%--    <title>${param.title}</title> --%>
+ 	<%-- <title><%= request.getAttribute("title") %></title> --%>
+ 	
+ 	<title>
+ 	
+ 	<%
+ 	  if(request.getAttribute("title")==null){
+ 		  out.print("Home Page");
+ 	  }
+ 	  else{
+ 		  out.print(request.getAttribute("title"));
+ 	  }
+ 	 %>
+ 	
+ 	</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -56,10 +70,10 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">PAGES <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="blog.html">BLOG</a></li>
-                <li><a href="single-post.html">SINGLE POST</a></li>
-                <li><a href="portfolio.html">PORTFOLIO</a></li>
-                <li><a href="single-project.html">SINGLE PROJECT</a></li>
+                <li><a href="<%= request.getContextPath() %>/home?page=blog">BLOG</a></li>
+                <li><a href="<%= request.getContextPath() %>/home?page=single-post">SINGLE POST</a></li>
+                <li><a href="<%= request.getContextPath() %>/home?page=portfolio">PORTFOLIO</a></li>
+                <li><a href="<%= request.getContextPath() %>/home?page=single-project">SINGLE PROJECT</a></li>
               </ul>
             </li>
           </ul>
