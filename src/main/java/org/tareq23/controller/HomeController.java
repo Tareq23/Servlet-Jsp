@@ -32,21 +32,41 @@ public class HomeController extends HttpServlet {
 		switch(page)
 		{
 		case "home" : 
-				request.setAttribute("title", "Home");
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+			homePage(request,response);
 			break;
 		case "list-user":
-				List<User> userList = new ArrayList<>();
-				userList = new UsersModel().listUser(dataSource);
-				request.setAttribute("listUser", userList);
-				request.setAttribute("title","User List");
-				request.getRequestDispatcher("list-user.jsp").forward(request, response);
+				listUser(request,response);
+			break;
+		case "add-user":
+				addUser(request,response);
 			break;
 		default : 
-			request.setAttribute("title", "Error Page");
-			request.getRequestDispatcher("error.jsp").forward(request, response);
+			errorPage(request,response);
 			break;
 		}
 	}
+	
+	
+	public void homePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		request.setAttribute("title", "Home");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+	}
 
+	public void listUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		List<User> userList = new ArrayList<>();
+		userList = new UsersModel().listUser(dataSource);
+		request.setAttribute("listUser", userList);
+		request.setAttribute("title","User List");
+		request.getRequestDispatcher("list-user.jsp").forward(request, response);
+	}
+	public void addUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		request.getRequestDispatcher("addUser.jsp").forward(request, response);
+	}
+	
+	public void errorPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		request.setAttribute("title", "Error Page");
+		request.getRequestDispatcher("error.jsp").forward(request, response);
+	}
+	
+	
 }

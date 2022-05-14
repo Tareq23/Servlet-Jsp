@@ -70,6 +70,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">PAGES <b class="caret"></b></a>
               <ul class="dropdown-menu">
+                <li><a href="<%= request.getContextPath() %>/home?page=add-user">Add User</a></li>
                 <li><a href="<%= request.getContextPath() %>/home?page=blog">BLOG</a></li>
                 <li><a href="<%= request.getContextPath() %>/home?page=single-post">SINGLE POST</a></li>
                 <li><a href="<%= request.getContextPath() %>/home?page=portfolio">PORTFOLIO</a></li>
