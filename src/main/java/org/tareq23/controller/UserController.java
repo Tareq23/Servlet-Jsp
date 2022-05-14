@@ -1,6 +1,5 @@
 package org.tareq23.controller;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,39 +16,60 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-
-@WebServlet("/home")
-public class HomeController extends HttpServlet {
+/**
+ * Servlet implementation class UserController
+ */
+@WebServlet("/user")
+public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
+	
 	@Resource(name="jdbc/project")
 	private DataSource dataSource;
-   
+
+    /**
+     * Default constructor. 
+     */
+    public UserController() {
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String page = request.getParameter("page");
-		page = page.toLowerCase();
 		
-		switch(page)
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String form = request.getParameter("form");
+		
+		switch(form)
 		{
-		case "home" : 
-			homePage(request,response);
-			break;
-		case "list-user":
-				listUser(request,response);
-			break;
 		case "add-user":
 				addUser(request,response);
 			break;
 		default : 
-			errorPage(request,response);
+				HomeController.errorPage(request, response);
 			break;
 		}
 	}
 	
-	
-	public void homePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		request.setAttribute("title", "Home");
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+	public void addUser(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		
+		User user = new User(request.getParameter("username"),request.getParameter("email"));
+		
+		boolean rs = new UsersModel().addUser(dataSource,user);
+		
+		System.out.println(rs);
+		if(rs) {
+			response.sendRedirect(request.getContextPath()+"/home?page=list-user");
+		}
+		else {
+			response.sendRedirect(request.getContextPath()+"/home?page=add-user");
+		}
+		
 	}
 
 	public void listUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -59,14 +79,5 @@ public class HomeController extends HttpServlet {
 		request.setAttribute("title","User List");
 		request.getRequestDispatcher("list-user.jsp").forward(request, response);
 	}
-	public void addUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		request.getRequestDispatcher("addUser.jsp").forward(request, response);
-	}
-	
-	public static void errorPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		request.setAttribute("title", "Error Page");
-		request.getRequestDispatcher("error.jsp").forward(request, response);
-	}
-	
-	
+
 }

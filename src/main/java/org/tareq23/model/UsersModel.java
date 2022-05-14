@@ -1,6 +1,7 @@
 package org.tareq23.model;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -45,6 +46,30 @@ public class UsersModel {
 		}
 		
 		return _listUser;
+	}
+
+	public boolean addUser(DataSource dataSource,User user) {
+		Connection connect = null;
+		PreparedStatement preStmt = null;
+		
+		try {
+			connect = dataSource.getConnection();
+			String username = user.getUsername();
+			String email = user.getEmail();
+			System.out.println(username+"\n"+email);
+			String query = "insert into users (username,email) values(?,?)";
+			preStmt = connect.prepareStatement(query);
+			preStmt.setString(1, username);
+			preStmt.setString(2, email);
+			preStmt.execute();
+			return true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		
 	}
 	
 }
