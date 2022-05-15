@@ -56,7 +56,7 @@ public class UsersModel {
 			connect = dataSource.getConnection();
 			String username = user.getUsername();
 			String email = user.getEmail();
-			System.out.println(username+"\n"+email);
+//			System.out.println(username+"\n"+email);
 			String query = "insert into users (username,email) values(?,?)";
 			preStmt = connect.prepareStatement(query);
 			preStmt.setString(1, username);
@@ -70,6 +70,29 @@ public class UsersModel {
 		}
 		
 		
+	}
+
+	public void updateUser(DataSource dataSource, User updateUser) {
+		
+		Connection connect = null;
+		PreparedStatement preStmt = null;
+		
+		try {
+			connect = dataSource.getConnection();
+			String username = updateUser.getUsername();
+			String email = updateUser.getEmail();
+//			System.out.println(username+"\n"+email);
+			String query = "update users set username = ?, email = ? where users_id=?";
+			preStmt = connect.prepareStatement(query);
+			preStmt.setString(1, username);
+			preStmt.setString(2, email);
+			preStmt.setInt(3, updateUser.getUsers_id());
+			preStmt.execute();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();	
+		}
 	}
 	
 }

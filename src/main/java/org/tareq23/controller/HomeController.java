@@ -40,6 +40,9 @@ public class HomeController extends HttpServlet {
 		case "add-user":
 				addUser(request,response);
 			break;
+		case "update-user":
+			updateUser(request,response);
+			break;
 		default : 
 			errorPage(request,response);
 			break;
@@ -47,6 +50,14 @@ public class HomeController extends HttpServlet {
 	}
 	
 	
+	public void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		request.setAttribute("title", "Update User Info");
+		request.getRequestDispatcher("update-user.jsp").forward(request, response);
+	
+		
+	}
+
+
 	public void homePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		request.setAttribute("title", "Home");
 		request.getRequestDispatcher("index.jsp").forward(request, response);

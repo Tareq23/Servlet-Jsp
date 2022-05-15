@@ -41,6 +41,12 @@
 									out.print("<td>"+ _listUser.get(i).getUsers_id() +"</td>");
 									out.print("<td>"+ _listUser.get(i).getUsername() +"</td>");
 									out.print("<td>"+ _listUser.get(i).getEmail() +"</td>");
+									String tempURL = request.getContextPath()+
+											"/home?page=update-user&userId="+
+											_listUser.get(i).getUsers_id()+
+											"&username="+_listUser.get(i).getUsername()+
+											"&email="+_listUser.get(i).getEmail();
+									out.print("<td class='btn-warning my-2'><a href="+tempURL+">Update</a></td>");
 								out.print("</tr>");
 							}
 						%>

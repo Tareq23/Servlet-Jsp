@@ -50,19 +50,32 @@ public class UserController extends HttpServlet {
 		case "add-user":
 				addUser(request,response);
 			break;
+		case "update-user":
+			updateUser(request,response);
+			break;
 		default : 
 				HomeController.errorPage(request, response);
 			break;
 		}
 	}
 	
+	public void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		User updateUser = new User(Integer.parseInt(request.getParameter("userId")),
+				request.getParameter("username"),request.getParameter("email"));
+		
+		new UsersModel().updateUser(dataSource,updateUser);
+		listUser(request,response);
+		
+	}
+
 	public void addUser(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		
 		User user = new User(request.getParameter("username"),request.getParameter("email"));
 		
 		boolean rs = new UsersModel().addUser(dataSource,user);
 		
-		System.out.println(rs);
+//		System.out.println(rs);
 		if(rs) {
 			response.sendRedirect(request.getContextPath()+"/home?page=list-user");
 		}
