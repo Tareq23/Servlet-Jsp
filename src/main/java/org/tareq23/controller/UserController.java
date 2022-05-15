@@ -39,6 +39,18 @@ public class UserController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String action = request.getParameter("action");
+		
+		switch(action)
+		{
+		case "delete-user":
+			deleteUser(request,response);
+			break;
+		default : 
+				HomeController.errorPage(request, response);
+			break;
+		}
+		
 	}
 
 	
@@ -53,12 +65,23 @@ public class UserController extends HttpServlet {
 		case "update-user":
 			updateUser(request,response);
 			break;
+		case "delete-user":
+			deleteUser(request,response);
+			break;
 		default : 
 				HomeController.errorPage(request, response);
 			break;
 		}
 	}
 	
+	private void deleteUser(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		
+		int userId = Integer.parseInt(request.getParameter("userId"));
+		
+		new UsersModel().deleteUser(dataSource, userId);
+		listUser(request,response);
+	}
+
 	public void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		User updateUser = new User(Integer.parseInt(request.getParameter("userId")),

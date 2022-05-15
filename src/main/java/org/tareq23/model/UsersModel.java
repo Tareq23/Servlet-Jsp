@@ -94,5 +94,24 @@ public class UsersModel {
 			e.printStackTrace();	
 		}
 	}
+
+	public void deleteUser(DataSource dataSource, int userId) {
+		
+		Connection connect = null;
+		PreparedStatement preStmt = null;
+		
+		try {
+			connect = dataSource.getConnection();
+			
+			String query = "delete from users where users_id=?";
+			preStmt = connect.prepareStatement(query);
+			preStmt.setInt(1, userId);
+			preStmt.execute();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();	
+		}
+	}
 	
 }
